@@ -4,7 +4,7 @@ const net = require('net');
  * Establishes connection with the game server
  */
 const connect = function() {
-  const conn = net.createConnection({ 
+  const conn = net.createConnection({
     //host: '192.168.88.149',
     host: '127.0.0.1',
     port: 50541
@@ -12,12 +12,13 @@ const connect = function() {
 
   conn.on('connect', () => {
     console.log("Successfully connected to game server.");
-    conn.write("Name: ABC");
-    //conn.write("Move: up");
+    //setInterval( () => {
+    //  conn.write("Name: htb");
+    //}, 500);
   });
 
   // interpret incoming data as text
-  conn.setEncoding('utf8'); 
+  conn.setEncoding('utf8');
   conn.on("data", (data) => {
     console.log("Snake Server Says: ", data);
   });
@@ -32,4 +33,3 @@ const connect = function() {
 module.exports = {
   connect
 }
-
