@@ -1,4 +1,5 @@
 const net = require('net');
+const { IP, PORT } = require('./constants');
 
 /**
  * Establishes connection with the game server
@@ -6,14 +7,14 @@ const net = require('net');
 const connect = function() {
   const conn = net.createConnection({
     //host: '192.168.88.149',
-    host: '127.0.0.1',
-    port: 50541
+    host: IP,
+    port: PORT
   });
 
   conn.on('connect', () => {
     console.log("Successfully connected to game server.");
     //setInterval( () => {
-    //  conn.write("Name: htb");
+    //  conn.write("Say: htb");
     //}, 500);
   });
 
@@ -25,10 +26,6 @@ const connect = function() {
 
   return conn;
 }
-
-//console.log('Connecting ...');
-//connect();
-
 
 module.exports = {
   connect
